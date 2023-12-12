@@ -1,6 +1,4 @@
-//
-// Created by alexi on 12/12/2023.
-//
+
 
 #ifndef PROJETLO21_IMPLEMENTATION_H
 #define PROJETLO21_IMPLEMENTATION_H

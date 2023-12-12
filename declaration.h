@@ -1,6 +1,3 @@
-//
-// Created by alexi on 12/12/2023.
-//
 
 #ifndef LO21_PROJET_DECLARATION_H
 #define LO21_PROJET_DECLARATION_H
