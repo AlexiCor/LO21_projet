@@ -4,7 +4,7 @@
 typedef struct Proposition{
     int idProposition;
     struct Proposition *suivant;
-}Proposition
+}Proposition;
 typedef Proposition *listeProposition;
 
 typedef struct Regle{
