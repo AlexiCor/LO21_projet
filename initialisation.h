@@ -1,0 +1,8 @@
+//
+// Created by alexi on 12/12/2023.
+//
+
+#ifndef PROJETLO21_INITIALISATION_H
+#define PROJETLO21_INITIALISATION_H
+
+#endif //PROJETLO21_INITIALISATION_H
