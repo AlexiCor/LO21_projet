@@ -8,5 +8,29 @@
 
 int main() {
 
+    //Création des règles / de la base de connaissances
+
+
+
+
+    //Récupération de la base de faits
+    int rep = 1;
+    while (rep != 0){
+        scanf("%d", &rep);
+        printf("%d", rep);
+    }
+
+
+
+    //Utilisation du moteur d'inférence
+
+
+
+
+    //Affichage des resultats
+
+
+
+
     return 0;
 }
