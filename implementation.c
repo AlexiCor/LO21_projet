@@ -25,9 +25,9 @@ listeProposition ajoutProposition(int e, listeProposition l) {
 
 listeProposition ajoutConlusion(int e, listeProposition l) {
    if(!videPremisse(l)){
-       Proposition *nouvelleProp = creerRegleVide();
-       nouvelleProp->idProposition = e;
-       conclusionRegle(l)->suivant=nouvelleProp;
+       Proposition nouvelleProp = creerRegleVide();
+       nouvelleProp.idProposition = e;
+       conclusionRegle(l).suivant=nouvelleProp;
    }
 
     return l;
