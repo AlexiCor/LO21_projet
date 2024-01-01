@@ -43,9 +43,19 @@ int main() {
     int rep = 1, resultatScanf;
     while (rep != 0){
         resultatScanf = scanf("%d", &rep);
-        if (resultatScanf == 1 && rep != 0){ //Vérifie si l'utilisateur a rentré un entier ou autre chose
-            baseFaits[i] = rep;
-            i++;
+        if(resultatScanf == 1 && rep != 0){ //Vérifie si l'utilisateur a rentré un entier ou autre chose
+            printf("bien joue\n");
+            baseFaits tempF;
+            tempF.idFait = rep;
+            tempF.suivant = NULL;
+            if (F->idFait == 0){
+                *F = tempF;
+            }
+            else{
+                F->suivant = &tempF;
+            }
+
+
         }
         else{
             printf("Erreur de saisie. Veuillez entrer un entier.\n");

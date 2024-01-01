@@ -8,7 +8,7 @@ bool testProposition(int idProp, listeProposition l){
         return false;
     } else {
         if (testProposition(idProp, l->suivant) || tetePremisse(l)->idProposition == idProp){
-            return false;
+            return true;
         } else {
             return false;
         }

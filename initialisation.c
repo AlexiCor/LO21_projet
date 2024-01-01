@@ -4,12 +4,13 @@
 #include <stdio.h>
 
 
-listeProposition creerRegleVide(){
+listeProposition creerLPropositionVide(){
     listeProposition nouvelleProp = (listeProposition)malloc(sizeof(Proposition)); //IMPORTANT
     nouvelleProp->suivant = NULL;
     nouvelleProp->idProposition = 0;
     return nouvelleProp;
 }
+
 
 Regle *creerBaseVide(){
     Regle *nouvelleRegle=(Regle *)malloc(sizeof(Regle));
