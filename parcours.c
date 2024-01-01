@@ -4,26 +4,27 @@
 
 #include "parcours.h"
 #include "verification.h"
+#include "initialisation.h"
 #include <stdio.h>
 
-Proposition tetePremisse(listeProposition l){
+listeProposition tetePremisse(listeProposition l){
     if (!videPremisse(l)){
-        return *l;
+        return l;
     } else {
         return NULL;
     }
 }
 
 
-Proposition conclusionRegle(listeProposition l){
+listeProposition conclusionRegle(listeProposition l){
     if (videPremisse(l)) {
-        return NULL;
+        return creerRegleVide();
     } else {
         Proposition *p = tetePremisse(l);
         while (videPremisse((p->suivant)->suivant)){
             p = p->suivant;
         }
-        return *p;
+        return p;
     }
 }
 

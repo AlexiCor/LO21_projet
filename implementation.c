@@ -7,13 +7,13 @@
 #include <stdio.h>
 
 listeProposition ajoutProposition(int e, listeProposition l) {
-    Proposition nouvelleProp = creerRegleVide();
-    nouvelleProp.idProposition = e;
-    nouvelleProp.suivant=NULL;
+    listeProposition nouvelleProp = creerRegleVide();
+    nouvelleProp->idProposition = e;
+    nouvelleProp->suivant=NULL;
 
         if (!videPremisse(l)) {
             printf("0");
-            conclusionRegle(l).suivant = nouvelleProp;
+            conclusionRegle(l)->suivant = nouvelleProp;
         } else {
             printf("1");
             l = nouvelleProp;
@@ -25,9 +25,9 @@ listeProposition ajoutProposition(int e, listeProposition l) {
 
 listeProposition ajoutConlusion(int e, listeProposition l) {
    if(!videPremisse(l)){
-       Proposition nouvelleProp = creerRegleVide();
-       nouvelleProp.idProposition = e;
-       conclusionRegle(l).suivant=nouvelleProp;
+       listeProposition nouvelleProp = creerRegleVide();
+       nouvelleProp->idProposition = e;
+       conclusionRegle(l)->suivant=nouvelleProp;
    }
 
     return l;

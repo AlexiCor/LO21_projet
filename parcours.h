@@ -7,8 +7,8 @@
 
 #include "declaration.h"
 
-Proposition tetePremisse(listeProposition l);
-Proposition conclusionRegle(listeProposition l);
+listeProposition tetePremisse(listeProposition l);
+listeProposition conclusionRegle(listeProposition l);
 BC teteBase(BC l);
 
 #endif //LO21_PROJET_PARCOURS_H

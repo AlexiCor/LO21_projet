@@ -3,10 +3,10 @@
 #include "declaration.h"
 
 
-Proposition creerRegleVide(){
-    Proposition nouvelleProp;
-    nouvelleProp.suivant = NULL;
-    nouvelleProp.idProposition = 0;
+listeProposition creerRegleVide(){
+    listeProposition nouvelleProp;
+    nouvelleProp->suivant = NULL;
+    nouvelleProp->idProposition = 0;
     return nouvelleProp;
 }
 

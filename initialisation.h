@@ -4,7 +4,7 @@
 
 #include "declaration.h"
 
-Proposition creerRegleVide();
+listeProposition creerRegleVide();
 Regle *creerBaseVide();
 
 #endif //PROJETLO21_INITIALISATION_H
