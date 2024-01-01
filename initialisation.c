@@ -1,10 +1,11 @@
 #include <stdlib.h>
 #include "initialisation.h"
 #include "declaration.h"
+#include <stdio.h>
 
 
 listeProposition creerRegleVide(){
-    listeProposition nouvelleProp;
+    listeProposition nouvelleProp = (listeProposition)malloc(sizeof(Proposition)); //IMPORTANT
     nouvelleProp->suivant = NULL;
     nouvelleProp->idProposition = 0;
     return nouvelleProp;

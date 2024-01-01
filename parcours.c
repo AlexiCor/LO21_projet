@@ -18,7 +18,7 @@ listeProposition tetePremisse(listeProposition l){
 
 listeProposition conclusionRegle(listeProposition l){
     if (videPremisse(l)) {
-        return creerRegleVide();
+        return NULL;
     } else {
         Proposition *p = tetePremisse(l);
         while (videPremisse((p->suivant)->suivant)){
