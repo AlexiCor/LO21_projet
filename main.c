@@ -32,7 +32,7 @@ int main() {
     int rep = 1, resultatScanf;
     while (rep != 0){
         resultatScanf = scanf("%d", &rep);
-        if (resultatScanf == 1){ //Vérifie si l'utilisateur a rentré un entier ou autre chose
+        if (resultatScanf == 1 && rep != 0){ //Vérifie si l'utilisateur a rentré un entier ou autre chose
             baseFaits[i] = rep;
             i++;
         }
@@ -42,7 +42,7 @@ int main() {
         }
     }
 
-    printf("Liste des faits de la base de fait :\n")
+    printf("Liste des faits de la base de fait :\n");
     for (int j = 0; j < i; ++j) {
         printf("%d\n", baseFaits[j]);
     }
