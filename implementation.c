@@ -4,14 +4,18 @@
 #include "initialisation.h"
 #include "parcours.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 listeProposition ajoutProposition(int e, listeProposition l) {
-    Proposition *nouvelleProp = creerRegleVide();
-    nouvelleProp->idProposition = e;
+    Proposition nouvelleProp = creerRegleVide();
+    nouvelleProp.idProposition = e;
+    nouvelleProp.suivant=NULL;
 
         if (!videPremisse(l)) {
-            conclusionRegle(l)->suivant = nouvelleProp;
+            printf("0");
+            conclusionRegle(l).suivant = nouvelleProp;
         } else {
+            printf("1");
             l = nouvelleProp;
         }
 
@@ -38,7 +42,7 @@ BC ajoutRegle(Regle r, BC l){
         l=nouvelleRegle;
     }else{
         Regle *p = teteBase(l);
-        while(videPremisse(p->suivant)==0){
+        while(!videPremisse(p->suivant)){
             p=p->suivant;
         }
         p->suivant = nouvelleRegle;
