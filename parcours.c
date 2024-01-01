@@ -16,15 +16,26 @@ listeProposition tetePremisse(listeProposition l){
 }
 
 
-listeProposition conclusionRegle(listeProposition l){
+listeProposition conclusionRegle(listeProposition l) {
     if (videPremisse(l)) {
+        printf("conclusionRegle0\n");
         return NULL;
     } else {
-        Proposition *p = tetePremisse(l);
-        while (videPremisse((p->suivant)->suivant)){
-            p = p->suivant;
+        if (videPremisse(l->suivant)) {
+            printf("conclusionRegle5\n");
+            return l;
+
+        } else {
+            printf("conclusionRegle1\n");
+            Proposition *p = tetePremisse(l);
+            printf("conclusionRegle2\n");
+            while (videPremisse((p->suivant)->suivant)) {
+                printf("conclusionRegle3\n");
+                p = p->suivant;
+            }
+            printf("conclusionRegle4\n");
+            return p;
         }
-        return p;
     }
 }
 
