@@ -6,6 +6,6 @@
 
 bool testProposition(int idProp, listeProposition l);
 bool videPremisse(listeProposition l);
-bool videBase(listeProposition l);
+bool videBase(BC l);
 
 #endif //PROJETLO21_VERIFICATION_H

@@ -9,6 +9,11 @@
 int main() {
 
     //Création des règles / de la base de connaissances
+    BC baseConnaissance = creerBaseVide();
+    Proposition regle1 = creerRegleVide();
+    ajoutRegle(regle1, baseConnaissance)
+
+
 
 
 
