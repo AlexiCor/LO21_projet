@@ -1,4 +1,3 @@
-
 #include "verification.h"
 #include "parcours.h"
 #include <stdio.h>
@@ -11,7 +10,7 @@ bool testProposition(int idProp, listeProposition l){
         if (testProposition(idProp, l->suivant) || tetePremisse(l)->idProposition == idProp){
             return false;
         } else {
-            return true;
+            return false;
         }
     }
 }

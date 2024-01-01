@@ -7,26 +7,26 @@
 #include <stdio.h>
 
 listeProposition ajoutProposition(int e, listeProposition l) {
-    listeProposition nouvelleProp = creerRegleVide();
+    listeProposition nouvelleProp = creerLPropositionVide();
     nouvelleProp->idProposition = e;
     nouvelleProp->suivant=NULL;
 
         if (!videPremisse(l)) {
-            printf("ajoutPorposition0\n");
+            printf("ajoutProposition0\n");
             conclusionRegle(l)->suivant = nouvelleProp;
-            printf("ajoutPorposition1\n");
+            printf("ajoutProposition1\n");
         } else {
-            printf("ajoutPorposition2\n");
+            printf("ajoutProposition2\n");
             l = nouvelleProp;
         }
 
-    printf("ajoutPorposition3,%d\n",e);
+    printf("ajoutProposition3,%d\n",e);
     return l;
 }
 
 listeProposition ajoutConlusion(int e, listeProposition l) {
    if(!videPremisse(l)){
-       listeProposition nouvelleProp = creerRegleVide();
+       listeProposition nouvelleProp = creerLPropositionVide();
        nouvelleProp->idProposition = e;
        conclusionRegle(l)->suivant=nouvelleProp;
    }

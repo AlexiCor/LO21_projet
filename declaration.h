@@ -13,6 +13,15 @@ typedef struct Regle{
 }Regle;
 typedef Regle *BC;
 
+typedef struct baseFaits{
+    int idFait;
+    struct baseFaits *suivant;
+}baseFaits;
+
+typedef struct conclusion{
+    int idFait;
+    struct conclusion *suivant;
+}conclusion;
 
 
 
