@@ -11,17 +11,17 @@ int main() {
     //Création des règles / de la base de connaissances
     BC baseConnaissance = creerBaseVide();
     printf("base de connaissance vide creee\n");
-    Regle regle1;
+    BC regle1;
 
-    regle1 = creerRegleVide();
+    regle1 = creerBaseVide();
     printf("regle creee\n");
 
-    regle1.LProposition = ajoutProposition(1, regle1.LProposition);
-    regle1.LProposition = ajoutProposition(2, regle1.LProposition);
-    regle1.LProposition = ajoutProposition(3, regle1.LProposition);
+    regle1->LProposition = ajoutProposition(1, regle1->LProposition);
+    regle1->LProposition = ajoutProposition(2, regle1->LProposition);
+    regle1->LProposition = ajoutProposition(3, regle1->LProposition);
     printf("regle creee\n");
 
-    baseConnaissance = ajoutRegle(regle1, baseConnaissance);
+    baseConnaissance = ajoutRegle(*regle1, baseConnaissance);
 
 
 
