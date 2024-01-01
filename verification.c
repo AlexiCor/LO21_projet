@@ -5,10 +5,10 @@
 #include <stdbool.h>
 
 bool testProposition(int idProp, listeProposition l){
-    if(videPremisse(l) || idProp == conclusionRegle(l)){
+    if(videPremisse(l) || (idProp == conclusionRegle(l)->idProposition)){
         return false;
     } else {
-        if (testProposition(idProp, l->suivant) || tetePremisse(l).idProposition == idProp){
+        if (testProposition(idProp, l->suivant) || tetePremisse(l)->idProposition == idProp){
             return false;
         } else {
             return true;
