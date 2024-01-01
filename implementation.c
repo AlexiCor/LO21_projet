@@ -1,9 +1,12 @@
 #include "implementation.h"
 #include "declaration.h"
 #include "verification.h"
+#include "initialisation.h"
+#include "parcours.h"
+#include <stdlib.h>
 
 listeProposition ajoutProposition(int e, listeProposition l) {
-    Proposition nouvelleProp = creerRegleVide();
+    Proposition *nouvelleProp = creerRegleVide();
     nouvelleProp->idProposition = e;
 
         if (!videPremisse(l)) {
@@ -18,7 +21,7 @@ listeProposition ajoutProposition(int e, listeProposition l) {
 
 listeProposition ajoutConlusion(int e, listeProposition l) {
    if(!videPremisse(l)){
-       Proposition nouvelleProp = creerRegleVide();
+       Proposition *nouvelleProp = creerRegleVide();
        nouvelleProp->idProposition = e;
        conclusionRegle(l)->suivant=nouvelleProp;
    }
@@ -27,14 +30,18 @@ listeProposition ajoutConlusion(int e, listeProposition l) {
 }
 
 BC ajoutRegle(Regle r, BC l){
+    Regle *nouvelleRegle = (Regle *)malloc(sizeof(Regle));
+    nouvelleRegle->LProposition = r.LProposition;
+    nouvelleRegle->suivant = NULL;
+
     if(videBase(l)){
-        l=r;
+        l=nouvelleRegle;
     }else{
-        Regle p = teteBase(l);
-        while(videPremisse(suivant(p))==0){
-            p=suivant(p);
+        Regle *p = teteBase(l);
+        while(videPremisse(p->suivant)==0){
+            p=p->suivant;
         }
-        r=suivant(p);
+        p->suivant = nouvelleRegle;
     }
     return l;
 }

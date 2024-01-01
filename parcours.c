@@ -6,7 +6,7 @@
 #include "verification.h"
 #include <stdio.h>
 
-listeProposition tetePremisse(listeProposition l){
+Proposition *tetePremisse(listeProposition l){
     if (!videPremisse(l)){
         return l;
     } else {
@@ -15,20 +15,20 @@ listeProposition tetePremisse(listeProposition l){
 }
 
 
-Proposition conclusionRegle(listeProposition l){
+Proposition *conclusionRegle(listeProposition l){
     if (videPremisse(l)) {
         return NULL;
     } else {
-        Proposition p = tetePremisse(l);
-        while (videPremisse((p.suivant)->suivant)){
-            p = p.suivant;
+        Proposition *p = tetePremisse(l);
+        while (videPremisse((p->suivant)->suivant)){
+            p = p->suivant;
         }
         return p;
     }
 }
 
 
-BC teteBase(BC l){
+BC *teteBase(BC l){
     if(videBase(l)){
         return NULL;
     }else{

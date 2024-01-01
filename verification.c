@@ -6,12 +6,12 @@
 
 bool testProposition(int idProp, listeProposition l){
     if(videPremisse(l) || idProp == conclusionRegle(l)){
-        return 0;
+        return false;
     } else {
-        if (testProposition(idProp, l->suivant) == 1 || (tetePremisse(l))->idProposition == idProp){
-            return 0;
+        if (testProposition(idProp, l->suivant) || tetePremisse(l)->idProposition == idProp){
+            return false;
         } else {
-            return 1;
+            return true;
         }
     }
 }
@@ -19,18 +19,18 @@ bool testProposition(int idProp, listeProposition l){
 
 bool videPremisse(listeProposition l){
     if (l == NULL){
-        return 1;
+        return true;
     } else {
-        return 0;
+        return false;
     }
 }
 
 
 bool videBase(BC l){
     if (l == NULL){
-        return 1;
+        return true;
     } else {
-        return 0;
+        return false;
     }
 }
 

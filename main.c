@@ -9,24 +9,22 @@
 int main() {
 
     //Création des règles / de la base de connaissances
-    BC baseConnaissance;
-    *baseConnaissance = creerBaseVide();
-    Proposition regle1;
-    *regle1 = creerRegleVide();
+    BC baseConnaissance = creerBaseVide();
+    Regle *regle1 = creerBaseVide();
 
-    regle1 = ajoutProposition(1, regle1);
-    regle1 = ajoutProposition(2, regle1);
-    regle1 = ajoutProposition(3, regle1);
-    regle1 = ajoutConlusion(4, regle1);
+    regle1->LProposition = ajoutProposition(1, regle1->LProposition);
+    regle1->LProposition = ajoutProposition(2, regle1->LProposition);
+    regle1->LProposition = ajoutProposition(3, regle1->LProposition);
+    regle1->LProposition = ajoutConlusion(4, regle1->LProposition);
 
-    ajoutRegle(regle1, baseConnaissance);
+    baseConnaissance = ajoutRegle(regle1, baseConnaissance);
 
 
 
 
 
     //Récupération de la base de faits
-    int baseFaits[], i=0;
+    int *baseFaits, i=0;
 
     printf("Veuillez entrer la base de faits, un fait à la fois, puis entrer 0 une fois finis :\n");
     int rep = 1, resultatScanf;
