@@ -26,18 +26,26 @@ int main() {
 
 
     //Récupération de la base de faits
+    int baseFaits[], i=0;
+
     printf("Veuillez entrer la base de faits, un fait à la fois, puis entrer 0 une fois finis :\n");
     int rep = 1, resultatScanf;
     while (rep != 0){
         resultatScanf = scanf("%d", &rep);
         if (resultatScanf == 1){ //Vérifie si l'utilisateur a rentré un entier ou autre chose
-            printf("%d\n", rep);
+            baseFaits[i] = rep;
+            i++;
         }
         else{
             printf("Erreur de saisie. Veuillez entrer un entier.\n");
             while (getchar() != '\n'); //Vide le buffer
         }
     }
+
+    for (int j = 0; j < i; ++j) {
+        printf("%d\n", baseFaits[j]);
+    }
+
 
 
 
