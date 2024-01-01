@@ -42,7 +42,7 @@ BC ajoutRegle(Regle r, BC l){
         l=nouvelleRegle;
     }else{
         Regle *p = teteBase(l);
-        while(!videPremisse(p->suivant)){
+        while(!videBase(p->suivant)){
             p=p->suivant;
         }
         p->suivant = nouvelleRegle;

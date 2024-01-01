@@ -28,7 +28,7 @@ Proposition conclusionRegle(listeProposition l){
 }
 
 
-BC *teteBase(BC l){
+BC teteBase(BC l){
     if(videBase(l)){
         return NULL;
     }else{
