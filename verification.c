@@ -26,7 +26,7 @@ bool videPremisse(listeProposition l){
 }
 
 
-bool videBase(listeProposition l){
+bool videBase(Regle l){
     if (l == NULL){
         return 1;
     } else {
