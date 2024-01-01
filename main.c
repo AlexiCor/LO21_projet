@@ -42,6 +42,7 @@ int main() {
         }
     }
 
+    printf("Liste des faits de la base de fait :\n")
     for (int j = 0; j < i; ++j) {
         printf("%d\n", baseFaits[j]);
     }
