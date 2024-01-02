@@ -108,13 +108,13 @@ int main() {
                     lF->suivant->idFait = testBaseConnaissance->LProposition->idProposition;
                     lF->suivant->suivant = NULL;
 
+                    printf("/////////////////////////////////////\n");
                     if (C->idFait == 0){
                         C->idFait = testBaseConnaissance->LProposition->idProposition;
                     }else{
                         C->suivant = malloc(sizeof(conclusion));
                         C->suivant->idFait = testBaseConnaissance->LProposition->idProposition;
                         C->suivant->suivant = NULL;
-                        C = C->suivant;
                         C = C->suivant;
                     }
                 }
@@ -129,7 +129,7 @@ int main() {
     //Affichage des resultats
 
     printf("A partir de la base de fait donnee, voici les propositions trouvees :\n");
-    *C = lconclusion;
+    C = &lconclusion;
     if(lconclusion.idFait == 0){
         printf("Aucune conclusion n'a ete trouvee");
         return 0;
