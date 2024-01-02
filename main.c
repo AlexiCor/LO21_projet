@@ -95,7 +95,8 @@ int main() {
         while (!videBase(testBaseConnaissance)) {
             if(testProposition(F->idFait,testBaseConnaissance->LProposition)){
                 printf("la proposition %d est vraie\n",F->idFait);
-                supprimerProposition(F->idFait, testBaseConnaissance->LProposition);
+                printf("nous nous appretons a supprimer %d\n\n",F->idFait);
+                testBaseConnaissance->LProposition = supprimerProposition(F->idFait, testBaseConnaissance->LProposition);
             }
             printf("la tete est %d\nla conclusion est %d\n",tetePremisse(testBaseConnaissance->LProposition)->idProposition,conclusionRegle(testBaseConnaissance->LProposition)->idProposition);
             if(conclusionRegle(testBaseConnaissance->LProposition) == tetePremisse(testBaseConnaissance->LProposition)){
