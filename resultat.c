@@ -1,10 +1,13 @@
 
 #include "resultat.h"
 #include "parcours.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 
 listeProposition supprimerProposition(int e, listeProposition l){
-    listeProposition p = tetePremisse(l);
+    listeProposition p;
+    p = &(*(tetePremisse(l)));
     if (p->idProposition == e){
         p = p->suivant;
         return p;
@@ -13,6 +16,8 @@ listeProposition supprimerProposition(int e, listeProposition l){
             p = p->suivant;
         }
         p->suivant = (p->suivant)->suivant;
+
     }
     return l;
 }
+

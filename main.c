@@ -88,36 +88,37 @@ int main() {
     conclusion *C = &lconclusion;
 
     F = &lbaseFaits;
-    while (F->suivant != NULL){
-        BC testBaseConnaissance = baseConnaissance;
+    BC testBaseConnaissance = baseConnaissance;
+    while (F != NULL){
+        printf("\n%d\n\n", F->idFait);
+        testBaseConnaissance = teteBase(baseConnaissance);
         while (!videBase(testBaseConnaissance)) {
             if(testProposition(F->idFait,testBaseConnaissance->LProposition)){
                 printf("la proposition %d est vraie\n",F->idFait);
                 supprimerProposition(F->idFait, testBaseConnaissance->LProposition);
             }
-            else{
-                if(conclusionRegle(testBaseConnaissance->LProposition) == tetePremisse(testBaseConnaissance->LProposition)){
-                    printf("TEST\n");
-                    printf("La regle est valide, la proposition %d est vraie\n", testBaseConnaissance->LProposition->idProposition);
-                    baseFaits *lF = &lbaseFaits;
-                    while (lF->suivant != NULL){
-                        lF = lF->suivant;
-                    }
-
-                    lF->suivant = malloc(sizeof(baseFaits));
-                    lF->suivant->idFait = testBaseConnaissance->LProposition->idProposition;
-                    lF->suivant->suivant = NULL;
-
-                    printf("/////////////////////////////////////\n");
-                    if (C->idFait == 0){
-                        C->idFait = testBaseConnaissance->LProposition->idProposition;
-                    }else{
-                        C->suivant = malloc(sizeof(conclusion));
-                        C->suivant->idFait = testBaseConnaissance->LProposition->idProposition;
-                        C->suivant->suivant = NULL;
-                        C = C->suivant;
-                    }
+            printf("la tete est %d\nla conclusion est %d\n",tetePremisse(testBaseConnaissance->LProposition)->idProposition,conclusionRegle(testBaseConnaissance->LProposition)->idProposition);
+            if(conclusionRegle(testBaseConnaissance->LProposition) == tetePremisse(testBaseConnaissance->LProposition)){
+                printf("La regle est valide, la proposition %d est vraie\n", testBaseConnaissance->LProposition->idProposition);
+                baseFaits *lF = &lbaseFaits;
+                while (lF->suivant != NULL){
+                    lF = lF->suivant;
                 }
+
+                lF->suivant = malloc(sizeof(baseFaits));
+                lF->suivant->idFait = testBaseConnaissance->LProposition->idProposition;
+                lF->suivant->suivant = NULL;
+
+                int tmp = testBaseConnaissance->LProposition->idProposition;
+                if (C->idFait == 0){
+                    C->idFait = testBaseConnaissance->LProposition->idProposition;
+                }else{
+                    C->suivant = malloc(sizeof(conclusion));
+                    C->suivant->idFait = testBaseConnaissance->LProposition->idProposition;
+                    C->suivant->suivant = NULL;
+                    C = C->suivant;
+                }
+                testBaseConnaissance->LProposition = supprimerProposition(tmp, testBaseConnaissance->LProposition);
             }
             testBaseConnaissance = testBaseConnaissance->suivant;
         }
