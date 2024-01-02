@@ -44,18 +44,19 @@ int main() {
     while (rep != 0){
         resultatScanf = scanf("%d", &rep);
         if(resultatScanf == 1 && rep != 0){ //Vérifie si l'utilisateur a rentré un entier ou autre chose
-            printf("bien joue\n");
-            baseFaits tempF;
-            tempF.idFait = rep;
-            tempF.suivant = NULL;
             if (F->idFait == 0){
-                *F = tempF;
+                F->idFait = rep;
             }
             else{
-                F->suivant = &tempF;
+                F->suivant = malloc(sizeof(baseFaits));
+                F->suivant->suivant = NULL;
+                F->suivant->idFait = rep;
+                F = F->suivant;
             }
 
-
+        }
+        else if(resultatScanf == 1 && rep == 0){
+            printf("Saisie de la base de faits terminee\n");
         }
         else{
             printf("Erreur de saisie. Veuillez entrer un entier.\n");
@@ -63,7 +64,8 @@ int main() {
         }
     }
 
-    *F = lbaseFaits;
+
+    F = &lbaseFaits;
     if(F == NULL){
         printf("La base de faits est vide, il n'y a aucune conclusion\n");
         return 0;
@@ -74,6 +76,7 @@ int main() {
         printf("%d ", F->idFait);
         F = F->suivant;
     }
+    printf("%d ", F->idFait);
     printf("\n");
 
 
@@ -84,7 +87,6 @@ int main() {
     lconclusion.idFait = 0;
     conclusion *C = &lconclusion;
 
-    int j = 0;
     while (F->suivant != NULL){
         BC testBaseConnaissance = baseConnaissance;
         while (!videBase(testBaseConnaissance)) {
