@@ -20,7 +20,13 @@ bool videPremisse(listeProposition l){
     if (l == NULL){
         return true;
     } else {
-        return false;
+        if (l->idProposition == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+
     }
 }
 
@@ -29,7 +35,12 @@ bool videBase(BC l){
     if (l == NULL){
         return true;
     } else {
-        return false;
+        if (l->LProposition == NULL){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
 

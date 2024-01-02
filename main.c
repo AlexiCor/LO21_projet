@@ -87,29 +87,38 @@ int main() {
     lconclusion.idFait = 0;
     conclusion *C = &lconclusion;
 
+    F = &lbaseFaits;
     while (F->suivant != NULL){
         BC testBaseConnaissance = baseConnaissance;
         while (!videBase(testBaseConnaissance)) {
-
-
             if(testProposition(F->idFait,testBaseConnaissance->LProposition)){
                 printf("la proposition %d est vraie\n",F->idFait);
                 supprimerProposition(F->idFait, testBaseConnaissance->LProposition);
             }
             else{
                 if(conclusionRegle(testBaseConnaissance->LProposition) == tetePremisse(testBaseConnaissance->LProposition)){
-                    printf("La regle est valide, la proposition %d est vraie", testBaseConnaissance->LProposition->idProposition);
+                    printf("TEST\n");
+                    printf("La regle est valide, la proposition %d est vraie\n", testBaseConnaissance->LProposition->idProposition);
                     baseFaits *lF = &lbaseFaits;
                     while (lF->suivant != NULL){
                         lF = lF->suivant;
                     }
+
+                    lF->suivant = malloc(sizeof(baseFaits));
                     lF->suivant->idFait = testBaseConnaissance->LProposition->idProposition;
                     lF->suivant->suivant = NULL;
-                    C->idFait = testBaseConnaissance->LProposition->idProposition;
-                    C = C->suivant;
+
+                    if (C->idFait == 0){
+                        C->idFait = testBaseConnaissance->LProposition->idProposition;
+                    }else{
+                        C->suivant = malloc(sizeof(conclusion));
+                        C->suivant->idFait = testBaseConnaissance->LProposition->idProposition;
+                        C->suivant->suivant = NULL;
+                        C = C->suivant;
+                        C = C->suivant;
+                    }
                 }
             }
-
             testBaseConnaissance = testBaseConnaissance->suivant;
         }
         F = F->suivant;
@@ -117,15 +126,12 @@ int main() {
 
 
 
-
-
-
     //Affichage des resultats
 
-    printf("A partir de la base de fait donnee, voici les propositions trouvées :\n");
+    printf("A partir de la base de fait donnee, voici les propositions trouvees :\n");
     *C = lconclusion;
     if(lconclusion.idFait == 0){
-        printf("Aucune conclusion n'a été trouvée");
+        printf("Aucune conclusion n'a ete trouvee");
         return 0;
     }
     printf("Les conclusions trouvées sont :\n");
