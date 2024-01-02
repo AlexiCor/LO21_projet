@@ -17,10 +17,12 @@ listeProposition tetePremisse(listeProposition l){
 
 
 listeProposition conclusionRegle(listeProposition l) {
+    printf("VidePremisse1");
     if (videPremisse(l)) {
         printf("conclusionRegle0\n");
         return NULL;
     } else {
+        printf("VidePremisse2");
         if (videPremisse(l->suivant)) {
             printf("conclusionRegle5\n");
             return l;
@@ -30,7 +32,7 @@ listeProposition conclusionRegle(listeProposition l) {
             Proposition *p;
             p = &(*(tetePremisse(l)));
             printf("conclusionRegle2\n");
-            while (!videPremisse((p->suivant)->suivant)){
+            while (!videPremisse(p->suivant)){
                 printf("conclusionRegle3\n");
                 p = p->suivant;
             }
