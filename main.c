@@ -12,16 +12,16 @@ int main() {
     //Création des règles / de la base de connaissances
     BC baseConnaissance = creerBaseVide();
     printf("base de connaissance vide creee\n");
+
+    //Création de la première règle
     listeProposition regle1;
 
     regle1 = creerLPropositionVide();
-    printf("regle creee\n");
 
     regle1 = ajoutProposition(1, regle1);
     regle1 = ajoutProposition(2, regle1);
     regle1 = ajoutProposition(3, regle1);
     regle1 = ajoutConlusion(4, regle1);
-    printf("regle creee\n");
 
     Regle REGLE;
     REGLE.LProposition=regle1;
@@ -29,8 +29,51 @@ int main() {
 
     baseConnaissance = ajoutRegle(REGLE, baseConnaissance);
 
+    //Création de la deuxième règle
+    listeProposition regle2;
 
+    regle2 = creerLPropositionVide();
 
+    regle2 = ajoutProposition(1, regle2);
+    regle2 = ajoutProposition(5, regle2);
+    regle2 = ajoutConlusion(6, regle2);
+
+    REGLE.LProposition=regle2;
+    REGLE.suivant=NULL;
+
+    baseConnaissance = ajoutRegle(REGLE, baseConnaissance);
+
+    //Création de la troisème règle
+    listeProposition regle3;
+
+    regle3 = creerLPropositionVide();
+
+    regle3 = ajoutProposition(1, regle3);
+    regle3 = ajoutProposition(2, regle3);
+    regle3 = ajoutProposition(7, regle3);
+    regle3 = ajoutConlusion(8, regle3);
+
+    REGLE.LProposition=regle3;
+    REGLE.suivant=NULL;
+
+    baseConnaissance = ajoutRegle(REGLE, baseConnaissance);
+
+    //Création de la troisème règle
+    listeProposition regle4;
+
+    regle4 = creerLPropositionVide();
+
+    regle4 = ajoutProposition(4, regle4);
+    regle4 = ajoutProposition(6, regle4);
+    regle4 = ajoutProposition(8, regle4);
+    regle4 = ajoutConlusion(9, regle4);
+
+    REGLE.LProposition=regle4;
+    REGLE.suivant=NULL;
+
+    baseConnaissance = ajoutRegle(REGLE, baseConnaissance);
+
+    printf("base de connaissance complete\n");
 
 
     //Récupération de la base de faits
@@ -90,17 +133,14 @@ int main() {
     F = &lbaseFaits;
     BC testBaseConnaissance = baseConnaissance;
     while (F != NULL){
-        printf("\n%d\n\n", F->idFait);
         testBaseConnaissance = teteBase(baseConnaissance);
         while (!videBase(testBaseConnaissance)) {
             if(testProposition(F->idFait,testBaseConnaissance->LProposition)){
-                printf("la proposition %d est vraie\n",F->idFait);
-                printf("nous nous appretons a supprimer %d\n\n",F->idFait);
+                printf("la proposition %d se trouve dans une regle\n",F->idFait);
                 testBaseConnaissance->LProposition = supprimerProposition(F->idFait, testBaseConnaissance->LProposition);
             }
-            printf("la tete est %d\nla conclusion est %d\n",tetePremisse(testBaseConnaissance->LProposition)->idProposition,conclusionRegle(testBaseConnaissance->LProposition)->idProposition);
             if(conclusionRegle(testBaseConnaissance->LProposition) == tetePremisse(testBaseConnaissance->LProposition)){
-                printf("La regle est valide, la proposition %d est vraie\n", testBaseConnaissance->LProposition->idProposition);
+                printf("Une regle est valide, la proposition %d est vraie\n", testBaseConnaissance->LProposition->idProposition);
                 lFaits *lF = &lbaseFaits;
                 while (lF->suivant != NULL){
                     lF = lF->suivant;
@@ -130,13 +170,12 @@ int main() {
 
     //Affichage des resultats
 
-    printf("A partir de la base de fait donnee, voici les propositions trouvees :\n");
     C = &lconclusion;
     if(lconclusion.idFait == 0){
-        printf("Aucune conclusion n'a ete trouvee");
+        printf("\nAucune conclusion n'a ete trouvee avec la base de fait donnee\n");
         return 0;
     }
-    printf("Les conclusions trouvees sont :\n");
+    printf("\nA partir de la base de fait donnee, les conclusions trouvees sont :\n");
     while(C->suivant != NULL){
         printf("%d ", C->idFait);
         C = C->suivant;
