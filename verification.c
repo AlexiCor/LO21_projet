@@ -18,10 +18,10 @@ bool testProposition(int idProp, listeProposition l){
 
 bool videPremisse(listeProposition l){
     if (l == NULL||l->idProposition == 0){
-        //printf("la premisse est vide\n");
+        //la premisse est vide
         return true;
     }else{
-            //printf("la premisse n'est pas vide\n");
+            //la premisse n'est pas vide
             return false;
         }
 

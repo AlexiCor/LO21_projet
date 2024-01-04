@@ -136,7 +136,7 @@ int main() {
         printf("Aucune conclusion n'a ete trouvee");
         return 0;
     }
-    printf("Les conclusions trouvées sont :\n");
+    printf("Les conclusions trouvees sont :\n");
     while(C->suivant != NULL){
         printf("%d ", C->idFait);
         C = C->suivant;

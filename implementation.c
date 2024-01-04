@@ -12,15 +12,11 @@ listeProposition ajoutProposition(int e, listeProposition l) {
     nouvelleProp->suivant=NULL;
 
         if (!videPremisse(l)) {
-            printf("ajoutProposition0\n");
             conclusionRegle(l)->suivant = nouvelleProp;
-            printf("ajoutProposition1\n");
         } else {
-            printf("ajoutProposition2\n");
             l = nouvelleProp;
         }
 
-    printf("ajoutProposition3,%d\n",e);
     return l;
 }
 
