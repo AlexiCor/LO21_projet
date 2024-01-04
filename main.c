@@ -132,6 +132,8 @@ int main() {
 
     F = &lbaseFaits;
     BC testBaseConnaissance = baseConnaissance;
+    lFaits *lF;
+    lF = &lbaseFaits;
     while (F != NULL){
         testBaseConnaissance = teteBase(baseConnaissance);
         while (!videBase(testBaseConnaissance)) {
@@ -141,14 +143,14 @@ int main() {
             }
             if(conclusionRegle(testBaseConnaissance->LProposition) == tetePremisse(testBaseConnaissance->LProposition)){
                 printf("Une regle est valide, la proposition %d est vraie\n", testBaseConnaissance->LProposition->idProposition);
-                lFaits *lF = &lbaseFaits;
+
                 while (lF->suivant != NULL){
                     lF = lF->suivant;
                 }
-
                 lF->suivant = malloc(sizeof(lFaits));
                 lF->suivant->idFait = testBaseConnaissance->LProposition->idProposition;
                 lF->suivant->suivant = NULL;
+                lF = lF->suivant;
 
                 int tmp = testBaseConnaissance->LProposition->idProposition;
                 if (C->idFait == 0){
