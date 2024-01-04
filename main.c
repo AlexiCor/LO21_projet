@@ -34,10 +34,10 @@ int main() {
 
 
     //Récupération de la base de faits
-    baseFaits lbaseFaits;
+    lFaits lbaseFaits;
     lbaseFaits.suivant = NULL;
     lbaseFaits.idFait = 0;
-    baseFaits *F = &lbaseFaits;
+    lFaits *F = &lbaseFaits;
 
     printf("Veuillez entrer la base de faits, un fait a la fois, puis entrer 0 une fois finis :\n");
     int rep = 1, resultatScanf;
@@ -48,7 +48,7 @@ int main() {
                 F->idFait = rep;
             }
             else{
-                F->suivant = malloc(sizeof(baseFaits));
+                F->suivant = malloc(sizeof(lFaits));
                 F->suivant->suivant = NULL;
                 F->suivant->idFait = rep;
                 F = F->suivant;
@@ -82,10 +82,10 @@ int main() {
 
     //Utilisation du moteur d'inférence
 
-    conclusion lconclusion;
+    lFaits lconclusion;
     lconclusion.suivant = NULL;
     lconclusion.idFait = 0;
-    conclusion *C = &lconclusion;
+    lFaits *C = &lconclusion;
 
     F = &lbaseFaits;
     BC testBaseConnaissance = baseConnaissance;
@@ -101,12 +101,12 @@ int main() {
             printf("la tete est %d\nla conclusion est %d\n",tetePremisse(testBaseConnaissance->LProposition)->idProposition,conclusionRegle(testBaseConnaissance->LProposition)->idProposition);
             if(conclusionRegle(testBaseConnaissance->LProposition) == tetePremisse(testBaseConnaissance->LProposition)){
                 printf("La regle est valide, la proposition %d est vraie\n", testBaseConnaissance->LProposition->idProposition);
-                baseFaits *lF = &lbaseFaits;
+                lFaits *lF = &lbaseFaits;
                 while (lF->suivant != NULL){
                     lF = lF->suivant;
                 }
 
-                lF->suivant = malloc(sizeof(baseFaits));
+                lF->suivant = malloc(sizeof(lFaits));
                 lF->suivant->idFait = testBaseConnaissance->LProposition->idProposition;
                 lF->suivant->suivant = NULL;
 
@@ -114,7 +114,7 @@ int main() {
                 if (C->idFait == 0){
                     C->idFait = testBaseConnaissance->LProposition->idProposition;
                 }else{
-                    C->suivant = malloc(sizeof(conclusion));
+                    C->suivant = malloc(sizeof(lFaits));
                     C->suivant->idFait = testBaseConnaissance->LProposition->idProposition;
                     C->suivant->suivant = NULL;
                     C = C->suivant;
