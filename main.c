@@ -141,7 +141,7 @@ int main() {
                 printf("la proposition %d se trouve dans une regle\n",F->idFait);
                 testBaseConnaissance->LProposition = supprimerProposition(F->idFait, testBaseConnaissance->LProposition);
             }
-            if(conclusionRegle(testBaseConnaissance->LProposition) == tetePremisse(testBaseConnaissance->LProposition)){
+            if(conclusionRegle(testBaseConnaissance->LProposition) == tetePremisse(testBaseConnaissance->LProposition) && testBaseConnaissance->LProposition->idProposition != 0){
                 printf("Une regle est valide, la proposition %d est vraie\n", testBaseConnaissance->LProposition->idProposition);
 
                 while (lF->suivant != NULL){
@@ -152,7 +152,6 @@ int main() {
                 lF->suivant->suivant = NULL;
                 lF = lF->suivant;
 
-                int tmp = testBaseConnaissance->LProposition->idProposition;
                 if (C->idFait == 0){
                     C->idFait = testBaseConnaissance->LProposition->idProposition;
                 }else{
@@ -161,7 +160,7 @@ int main() {
                     C->suivant->suivant = NULL;
                     C = C->suivant;
                 }
-                testBaseConnaissance->LProposition = supprimerProposition(tmp, testBaseConnaissance->LProposition);
+                testBaseConnaissance->LProposition->idProposition = 0;
             }
             testBaseConnaissance = testBaseConnaissance->suivant;
         }
