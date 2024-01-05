@@ -138,7 +138,7 @@ int main() {
         testBaseConnaissance = teteBase(baseConnaissance);
         while (!videBase(testBaseConnaissance)) {
             if(testProposition(F->idFait,testBaseConnaissance->LProposition)){
-                printf("la proposition %d se trouve dans une regle\n",F->idFait);
+                //la proposition %d se trouve dans une regle,F->idFait
                 testBaseConnaissance->LProposition = supprimerProposition(F->idFait, testBaseConnaissance->LProposition);
             }
             if(conclusionRegle(testBaseConnaissance->LProposition) == tetePremisse(testBaseConnaissance->LProposition) && testBaseConnaissance->LProposition->idProposition != 0){
